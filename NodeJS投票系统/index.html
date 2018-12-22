@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VoteApp</title>	
+
+    <link href="https://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">  
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="http://echarts.baidu.com/dist/echarts.js"></script>
+
+    <style type="text/css">
+    .top1{text-align: center;background-color: #e0e0e0;padding-top: 50px}
+    .box_lg{margin: 200px 300px 0px 300px}
+    .polls{margin-top: 50px}
+    
+    </style>
+    <script type="text/javascript">
+
+      function haveSession(){
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange=function()
+        {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+            if (xmlhttp.responseText=="fail") {
+                alert("          Welcome to dubai's website! please sign in first!");
+            }else {
+                $(".btn_student_id").text(xmlhttp.responseText);
+                $(".li1").hide();
+                $(".li2").show();
+                $(".makePoll").attr("href","#modal3");
+            }
+          }
+        }
+        var urlStr = "/session";
+        xmlhttp.open("GET",urlStr,true);
+        xmlhttp.send();  
+      }
+
+    </script>
+
+    <script type="text/javascript"> 
+
+        $(document).ready(function(){ 
+            haveSession();
+            $('.modal').modal(); 
+            $(".btn_login").click(function(){ 
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                var name1 = $(".ipt1").attr("name");
+                var value1 = $(".ipt1").val();
+                var name2 = $(".ipt2").attr("name");
+                var value2 = $(".ipt2").val();
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("登陆失败");
+                    }else if (xmlhttp.responseText=="success") {
+                        window.location.reload();
+                    }
+                  }
+                }
+                var urlStr = "/login?"+name1+"="+value1+"&"+name2+"="+value2;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send(); 
+            })  
+
+
+
+            $(".btn_signUp").click(function(){ 
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                var name3 = $(".ipt3").attr("name");
+                var value3 = $(".ipt3").val();
+                var name4 = $(".ipt4").attr("name");
+                var value4 = $(".ipt4").val();
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("登陆失败");
+                    }
+                    window.location.reload();
+                  }
+                }
+                var urlStr = "/signUp?"+name3+"="+value3+"&"+name4+"="+value4;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send();
+            })
+
+            $(".btn_add_option").click(function(){ 
+                $(".addInput").append("<input type='text' class='ipt6'  placeholder='option'/>");
+            })
+
+
+            $(".btn_submit_poll").click(function(){
+                
+                var pollQS = "?student_id=" + $(".btn_student_id").text() + "&title="+$(".ipt5").val();
+                var index = 0;
+                $(".ipt6").each(function(){
+                    index+=1;
+                    pollQS = pollQS + "&option" + index + "=" + $(this).val();
+                });
+
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("异常事件");
+                    }
+                    window.location.reload(); 
+                  }
+                }
+
+                var urlStr = "/newPoll" + pollQS;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send();
+            })
+
+        });  
+    </script>  
+  </head>
+  
+  <body>
+
+
+
+    
+
+
+    
+
+    <nav>
+    <div class="nav-wrapper teal lighten-2">
+      <a href="/" class="brand-logo">VoteApp</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li class="li1"><a  href="#modal1" class="btn_showlogin">Login</a></li>
+        <li class="li2" hidden="hidden"><a class="btn_my_polls">My Polls</a></li>
+        <li class="li1"><a href="#modal2">Sign Up</a></li>
+        <li class="li2" hidden="hidden"><a class="btn_student_id">00000000</a></li>
+      </ul>
+    </div>
+    </nav>
+
+
+   
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content"> 
+        <h4 align="center">登录账号</h4>
+  
+        <div class="box_cont">  
+            <form class="box_frm">  
+                <ol>  
+                    <input type="text" class="ipt1" name="student_id" placeholder="账号"/>
+                    <input type="text" class="ipt2" name="password" placeholder="密码"/> 
+                </ol> 
+                    <div align="center"><input value="登录" type="button" class="modal-action modal-close btn_login btn"></div>
+                 
+            </form>  
+        </div>  
+        </div>
+    </div>
+  </div>
+
+   <!-- Modal Structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content"> 
+        <h4 align="center">注册账号</h4>
+  
+        <div class="box_cont">  
+            <form class="box_frm">  
+                <ol>  
+                    <input type="text" class="ipt3" name="student_id" placeholder="账号"/>
+                    <input type="text" class="ipt4" name="password" placeholder="密码"/> 
+                </ol> 
+                    <div align="center"><input value="注册" type="button" class="modal-action modal-close btn_signUp btn"></div>
+                 
+            </form>  
+        </div>  
+        </div>
+    </div>
+  </div>
+
+   
+
+   <!-- Modal Structure -->
+  <div id="modal3" class="modal">
+    <div class="modal-content"> 
+        <div class="box_cont">  
+             
+                <ol class="addInput">  
+                    <input type="text" class="ipt5"  placeholder="title"/>
+                    <input type="text" class="ipt6"  placeholder="option"/>
+                    <input type="text" class="ipt6"  placeholder="option"/>
+                </ol> 
+
+                <div align="center">
+                    <a class="btn-floating btn-large waves-effect waves-light red btn_add_option"><i class="material-icons">add</i></a>
+                </div>
+                <br>
+                <div align="center">
+                    <input value="submit" type="button" class="modal-action modal-close btn_submit_poll btn">
+                </div>
+          
+        </div>  
+        </div>
+    </div>
+  </div>
+
+
+    <div class="top1"><h2>Voting APP</h2><h5><i>Below are some polls. Select a poll to see the results and vote, or </i><a  class="makePoll" href="#">make a new poll!</a></h5></div>
+    <div class="polls">
+        <ul class="collection" id="polls">
+          
+        </ul>
+    </div>
+    <script type="text/javascript">
+  
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+
+        xmlhttp.onreadystatechange=function()
+        {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+
+            if (xmlhttp.responseText=="fail") {
+               //没有poll
+                return;
+            }
+
+            var jsons=JSON.parse(xmlhttp.responseText);  
+
+            
+            for (var i = 0; i < jsons.length; i++) {
+                var htmlStr = "<a href='/static/echart.html?id="+ jsons[i].id + "&title=" + jsons[i].title + "&student_id=" + jsons[i].student_id + "' class='collection-item'>" + jsons[i].title +"<span style=' display:block; float:right;'>" + "发起人id：" + jsons[i].student_id + " 发布时间：" + jsons[i].time_creat +"</span></a>";
+                $("#polls").append(htmlStr);
+            }
+          }
+        }
+        var urlStr = "/queryMainTab?";
+        xmlhttp.open("GET",urlStr,true);
+        xmlhttp.send();
+
+</script>
+
+  </body>
+</html>

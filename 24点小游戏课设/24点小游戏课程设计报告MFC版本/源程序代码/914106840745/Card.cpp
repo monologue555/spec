@@ -1,0 +1,27 @@
+// Card.cpp: implementation of the CCard class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "914106840745.h"
+#include "Card.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CCard::CCard()
+{
+
+}
+
+CCard::~CCard()
+{
+
+}

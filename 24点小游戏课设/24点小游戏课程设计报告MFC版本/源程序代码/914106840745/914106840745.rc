@@ -1,0 +1,285 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\914106840745.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\914106840745.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 914106840745"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "914106840745 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2015",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_MY914106840745_DIALOG DIALOGEX 0, 0, 322, 226
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "914106840745"
+FONT 12, "@华文彩云"
+BEGIN
+    PUSHBUTTON      "(",IDC_BUTTONLEFT,95,109,21,17
+    PUSHBUTTON      ")",IDC_BUTTONRIGHT,117,109,21,17
+    PUSHBUTTON      "+",IDC_BUTTONADD,139,109,21,17
+    PUSHBUTTON      "-",IDC_BUTTONSUB,161,109,21,17
+    PUSHBUTTON      "*",IDC_BUTTONMUL,183,109,21,17
+    PUSHBUTTON      "/",IDC_BUTTONDIV,205,109,21,17
+    RTEXT           "0",IDC_TEXTOUTPUT,130,139,57,11
+    LTEXT           "=24?",IDC_STATIC,186,139,26,11
+    PUSHBUTTON      "清除",IDC_BUTTONDEL,210,137,21,10
+    PUSHBUTTON      "OK",IDC_BUTTONOK,146,161,34,22
+    LTEXT           "分数:",IDC_STATIC,250,14,25,10
+    LTEXT           "0",IDC_TEXTPOINT,281,14,21,11
+    PUSHBUTTON      "Start",IDC_BUTTONSTART,24,96,33,32
+    PUSHBUTTON      "",IDC_BUTTONCARD1,65,43,32,47,BS_BITMAP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_BUTTONCARD2,112,43,32,47,BS_BITMAP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_BUTTONCARD3,157,44,32,47,BS_BITMAP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_BUTTONCARD4,205,43,32,47,BS_BITMAP,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "查看答案",IDC_BUTTONRS,7,7,43,13
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "914106840745 Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "914106840745\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2015\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "914106840745.EXE\0"
+            VALUE "ProductName", "914106840745 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_MY914106840745_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 314
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 218
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\cl1.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "res\\cl2.bmp"
+IDB_BITMAP3             BITMAP  DISCARDABLE     "res\\cl3.bmp"
+IDB_BITMAP4             BITMAP  DISCARDABLE     "res\\cl4.bmp"
+IDB_BITMAP5             BITMAP  DISCARDABLE     "res\\cl5.bmp"
+IDB_BITMAP6             BITMAP  DISCARDABLE     "res\\cl6.bmp"
+IDB_BITMAP7             BITMAP  DISCARDABLE     "res\\cl7.bmp"
+IDB_BITMAP8             BITMAP  DISCARDABLE     "res\\cl8.bmp"
+IDB_BITMAP9             BITMAP  DISCARDABLE     "res\\cl9.bmp"
+IDB_BITMAP10            BITMAP  DISCARDABLE     "res\\cl10.bmp"
+IDB_BITMAP11            BITMAP  DISCARDABLE     "res\\clj.bmp"
+IDB_BITMAP12            BITMAP  DISCARDABLE     "res\\clq.bmp"
+IDB_BITMAP13            BITMAP  DISCARDABLE     "res\\clk.bmp"
+IDB_BITMAP14            BITMAP  DISCARDABLE     "res\\di1.bmp"
+IDB_BITMAP15            BITMAP  DISCARDABLE     "res\\di2.bmp"
+IDB_BITMAP16            BITMAP  DISCARDABLE     "res\\di3.bmp"
+IDB_BITMAP17            BITMAP  DISCARDABLE     "res\\di4.bmp"
+IDB_BITMAP18            BITMAP  DISCARDABLE     "res\\di5.bmp"
+IDB_BITMAP19            BITMAP  DISCARDABLE     "res\\di6.bmp"
+IDB_BITMAP20            BITMAP  DISCARDABLE     "res\\di7.bmp"
+IDB_BITMAP21            BITMAP  DISCARDABLE     "res\\di8.bmp"
+IDB_BITMAP22            BITMAP  DISCARDABLE     "res\\di9.bmp"
+IDB_BITMAP23            BITMAP  DISCARDABLE     "res\\di10.bmp"
+IDB_BITMAP24            BITMAP  DISCARDABLE     "res\\dij.bmp"
+IDB_BITMAP25            BITMAP  DISCARDABLE     "res\\diq.bmp"
+IDB_BITMAP26            BITMAP  DISCARDABLE     "res\\dik.bmp"
+IDB_BITMAP27            BITMAP  DISCARDABLE     "res\\he1.bmp"
+IDB_BITMAP28            BITMAP  DISCARDABLE     "res\\he2.bmp"
+IDB_BITMAP29            BITMAP  DISCARDABLE     "res\\he3.bmp"
+IDB_BITMAP30            BITMAP  DISCARDABLE     "res\\he4.bmp"
+IDB_BITMAP31            BITMAP  DISCARDABLE     "res\\he5.bmp"
+IDB_BITMAP32            BITMAP  DISCARDABLE     "res\\he6.bmp"
+IDB_BITMAP33            BITMAP  DISCARDABLE     "res\\he7.bmp"
+IDB_BITMAP34            BITMAP  DISCARDABLE     "res\\he8.bmp"
+IDB_BITMAP35            BITMAP  DISCARDABLE     "res\\he9.bmp"
+IDB_BITMAP36            BITMAP  DISCARDABLE     "res\\he10.bmp"
+IDB_BITMAP37            BITMAP  DISCARDABLE     "res\\hej.bmp"
+IDB_BITMAP38            BITMAP  DISCARDABLE     "res\\heq.bmp"
+IDB_BITMAP39            BITMAP  DISCARDABLE     "res\\hek.bmp"
+IDB_BITMAP40            BITMAP  DISCARDABLE     "res\\sp1.bmp"
+IDB_BITMAP41            BITMAP  DISCARDABLE     "res\\sp2.bmp"
+IDB_BITMAP42            BITMAP  DISCARDABLE     "res\\sp3.bmp"
+IDB_BITMAP43            BITMAP  DISCARDABLE     "res\\sp4.bmp"
+IDB_BITMAP44            BITMAP  DISCARDABLE     "res\\sp5.bmp"
+IDB_BITMAP45            BITMAP  DISCARDABLE     "res\\sp6.bmp"
+IDB_BITMAP46            BITMAP  DISCARDABLE     "res\\sp7.bmp"
+IDB_BITMAP47            BITMAP  DISCARDABLE     "res\\sp8.bmp"
+IDB_BITMAP48            BITMAP  DISCARDABLE     "res\\sp9.bmp"
+IDB_BITMAP53            BITMAP  DISCARDABLE     "res\\blackJoker.bmp"
+IDB_BITMAP54            BITMAP  DISCARDABLE     "res\\redJoker.bmp"
+IDB_BITMAP55            BITMAP  DISCARDABLE     "res\\BK.bmp"
+IDB_BITMAP49            BITMAP  DISCARDABLE     "res\\sp10.bmp"
+IDB_BITMAP50            BITMAP  DISCARDABLE     "res\\spj.bmp"
+IDB_BITMAP51            BITMAP  DISCARDABLE     "res\\spq.bmp"
+IDB_BITMAP52            BITMAP  DISCARDABLE     "res\\spk.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 914106840745(&A)..."
+END
+
+#endif    // Chinese (中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\914106840745.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VoteApp</title>	
+
+    <link href="https://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css" rel="stylesheet">   
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/materialize/0.98.2/js/materialize.min.js"></script>
+    <script src="http://echarts.baidu.com/dist/echarts.js"></script>
+
+    <style type="text/css">
+    .top1{text-align: center;background-color: #e0e0e0;padding-top: 50px}
+    .box_lg{margin: 200px 300px 0px 300px}
+    .polls{margin-top: 50px}
+    .card{padding: 10px 10px;height: 60px}
+    </style>
+
+    <script type="text/javascript">
+
+      function haveSession(){
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange=function()
+        {
+          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+          {
+            if (xmlhttp.responseText=="fail") {
+                alert("no session!");
+            }else {
+                $(".btn_student_id").text(xmlhttp.responseText);
+                $(".li1").hide();
+                $(".li2").show();
+                $(".card-content").append("<button class='btn'><a href='#modal2'><font color='white'>add New Option</font></a></button>");
+                if(getQueryString("student_id")==xmlhttp.responseText){
+                
+                    $(".card-content").append("<button class='btn'><a href='#modal4'><font color='white'>delete poll</font></a></button>");
+                }
+            }
+          }
+        }
+        var urlStr = "/session";
+        xmlhttp.open("GET",urlStr,true);
+        xmlhttp.send();  
+      }
+
+    </script>
+
+    <script type="text/javascript">  
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if ( r != null ){
+                return decodeURI(r[2]);
+            }else{
+                return null;
+            } 
+        }
+
+        $(document).ready(function(){
+            haveSession();
+
+            $(".modal").modal(); 
+
+            $(".btn_new_option").click(function(){
+
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("shibai");
+                    }else  {
+                        window.location.reload();
+                    }
+                  }
+                }
+                
+                var urlStr = "/newOption?maintab_id="+getQueryString("id")+"&option="+$(".ipt3").val();;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send();
+
+            })
+
+            $(".btn_login").click(function(){ 
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                var name1 = $(".ipt1").attr("name");
+                var value1 = $(".ipt1").val();
+                var name2 = $(".ipt2").attr("name");
+                var value2 = $(".ipt2").val();
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("登陆失败");
+                    }else if (xmlhttp.responseText=="success") {
+                        window.location.reload();
+                    }
+                  }
+                }
+                var urlStr = "/login?"+name1+"="+value1+"&"+name2+"="+value2;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send(); 
+            })  
+
+
+            $(".btn_signUp").click(function(){ 
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                var name4 = $(".ipt4").attr("name");
+                var value4 = $(".ipt4").val();
+                var name5 = $(".ipt5").attr("name");
+                var value5 = $(".ipt5").val();
+
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("异常失败");
+                    }else {
+                        window.location.reload();
+                    }
+                  }
+                }
+
+                var urlStr = "/signUp?"+name4+"="+value4+"&"+name5+"="+value5;
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send();
+            })  
+            $(".btn_delete_poll").click(function(){ 
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {// code for IE7+, Firefox, Chrome, Opera, Safari
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {// code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    if (xmlhttp.responseText=="fail") {
+                        alert("灵异事件");
+                    }else if (xmlhttp.responseText=="success") {
+                        window.location.reload();
+                    }
+                  }
+                }
+
+                var urlStr = "/deletePoll?id="+getQueryString("id");
+                xmlhttp.open("GET",urlStr,true);
+                xmlhttp.send();
+            })
+
+        });  
+    </script>  
+  </head>
+  
+
+  <body>
+
+
+
+
+
+    <nav>
+    <div class="nav-wrapper teal lighten-2">
+      <a href="/" class="brand-logo">VoteApp</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li class="li1"><a href="#modal1" class="btn_showlogin">Login</a></li>
+        <li class="li2" hidden="hidden"><a class="btn_my_polls">My Polls</a></li>
+        <li class="li1"><a href="#modal3">Sign Up</a></li>
+        <li class="li2" hidden="hidden"><a class="btn_student_id">0</a></li>
+      </ul>
+    </div>
+    </nav>
+
+
+   
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+     <div class="modal-content"> 
+        <h4 align="center">登录账号</h4>
+  
+        <div class="box_cont">  
+            <form class="box_frm">  
+                <ol>  
+                    <input type="text" class="ipt1" name="student_id" placeholder="账号"/>
+                    <input type="text" class="ipt2" name="password" placeholder="密码"/> 
+                </ol> 
+                    <div align="center"><input value="登录" type="button" class="modal-action modal-close btn_login btn"></div>
+                 
+            </form>  
+        </div>  
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Structure -->
+  <div id="modal3" class="modal">
+     <div class="modal-content"> 
+        <h4 align="center">注册账号</h4>
+  
+        <div class="box_cont">  
+            <form class="box_frm">  
+                <ol>  
+                    <input type="text" class="ipt4" name="student_id" placeholder="账号"/>
+                    <input type="text" class="ipt5" name="password" placeholder="密码"/> 
+                </ol> 
+                    <div align="center"><input value="注册" type="button" class="modal-action modal-close btn_signUp btn"></div>
+                 
+            </form>  
+        </div>  
+        </div>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content"> 
+        <div class="box_cont">  
+             
+                <ol>  
+                    <input type="text" class="ipt3"  placeholder="option"/>
+                </ol> 
+                    <div align="center"><button class="modal-action modal-close btn_new_option btn">submit</button></div>
+          
+        </div>  
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Structure -->
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <h5 align="center">确定删除吗？</h5>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat btn_delete_poll">确定</a>
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+    </div>
+  </div>
+
+
+  <div class="row" style="padding-top: 50px">
+    <div class="col s6">
+         <div class="row">
+        <div class="col s8">
+          <div class="titleFont" style="background-color: #009688; padding: 5px 3px"><h2><font color="white">Title</font></h2></div>
+          
+          <div class="cardBox" style="margin-top: 0px;padding: 10px">            
+            <div class="card-content">
+
+            </div>
+
+            <div class="card-action">
+            </div>
+          </div>
+        </div>
+      </div>
+            
+    </div>
+    <div class="col s6" id="pieChart" style="height:400px;"></div>
+  </div>
+
+  <script type="text/javascript">
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if ( r != null ){
+            return decodeURI(r[2]);
+        }else{
+            return null;
+        } 
+    }
+
+    //修改左侧div标题
+    var htmlStr = "<h2><font color='white'>" + getQueryString("title") + "</font></h2>";
+    $('.titleFont').html(htmlStr);
+
+
+    //使用ajax获取数据配置右侧div内echart
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    var  option = {
+    title : {
+        text: 'undefined',
+        subtext: 'undefined',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: 'undefined'
+    },
+    series : [
+        {
+            name: '统计结果',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:'undefined',
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]};
+    option.title.text=getQueryString("title");
+    option.title.subtext=getQueryString("student_id");
+    xmlhttp.onreadystatechange=function()
+    {
+        
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+
+            if (xmlhttp.responseText=="fail") {
+                alert("this poll is not exist!");
+                return;
+            }
+
+            var jsons=JSON.parse(xmlhttp.responseText); 
+
+            var legendDataArray = new Array([jsons.length]);
+            var seriesDataArray = new Array([jsons.length]);
+
+            for (var i = 0; i < jsons.length; i++) {
+                legendDataArray[i] = jsons[i].options;
+
+                var seriesDataJson = {value:0, name:'undefined'};
+                seriesDataJson.value = jsons[i].count;
+                seriesDataJson.name = jsons[i].options;
+                seriesDataArray[i] = seriesDataJson;
+                var htmlStr = "<div class='card'>" + jsons[i].options + " 票数为：" +jsons[i].count + "<span style='float:right;'><button class='btn btn_vote' value='"+ jsons[i].id +"'>vote</button></span></div>";
+                $(".card-content").append(htmlStr);
+            }
+
+            $(".btn_vote").click(function(){
+                    var xmlhttp;
+                    if (window.XMLHttpRequest)
+                    {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp=new XMLHttpRequest();
+                    }
+                    else
+                    {// code for IE6, IE5
+                      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+
+                    xmlhttp.onreadystatechange=function()
+                    {
+                      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                      {
+                        if (xmlhttp.responseText=="fail") {
+                            alert("异常失败");
+                        }else {
+                            window.location.reload();
+                        }
+                      }
+                    }
+                    
+                    var urlStr = "/updateOption?id="+$(this).attr("value");
+                    xmlhttp.open("GET",urlStr,true);
+                    xmlhttp.send();
+            })
+
+            
+            
+
+            option.legend.data = legendDataArray;
+            option.series[0].data = seriesDataArray;
+
+            var myChart = echarts.init(document.getElementById('pieChart'));
+            myChart.setOption(option);
+        }
+    }
+    var urlStr = "/queryMinorTab?maintab_id="+getQueryString("id");
+    xmlhttp.open("GET",urlStr,true);
+    xmlhttp.send();
+
+
+    
+
+  </script>
+
+
+
+  </body>
+</html>
